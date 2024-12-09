@@ -1,0 +1,6 @@
+[submodule "frontend"]
+	path = frontend
+	url = git@github.com:ypollet/Stackoptica-Frontend.git
+[submodule "data"]
+	path = data
+	url = git@github.com:ypollet/Stackoptica-Data.git
