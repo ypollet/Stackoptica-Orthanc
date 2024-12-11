@@ -28,7 +28,7 @@
 
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-FROM jodogne/orthanc-python
+FROM orthanc-python
 
 # This example is using a virtual env that is not mandatory when using Docker containers
 # but recommended since python 3.11 and Debian bookworm based images where you get a warning
@@ -36,7 +36,7 @@ FROM jodogne/orthanc-python
 RUN apt-get update && apt install -y python3-venv
 RUN python3 -m venv /.venv
 
-# for Sphaeroptica
+# for Stackoptica
 RUN /.venv/bin/pip install numpy
 ENV PYTHONPATH=/.venv/lib64/python3.11/site-packages/
 

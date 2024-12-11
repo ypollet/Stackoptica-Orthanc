@@ -30,7 +30,7 @@ app.config.from_object(__name__)
 
 # definitions
 SITE = {
-        'logo': 'Sphaeroptica',
+        'logo': 'Stackoptica',
         'version': '2.0.0'
 }
 
@@ -119,8 +119,6 @@ def images(id):
        print(error)
        continue
   encoded_images.sort(key=lambda image_data: projections[image_data[0]])
-  print(encoded_images)
-  print(projections)
   to_jsonify["stackImages"] = encoded_images
   to_jsonify["individualImages"] = stackedImages
   to_jsonify["size"] = {

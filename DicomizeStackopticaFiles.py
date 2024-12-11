@@ -1,4 +1,4 @@
-# Sphaeroptica - 3D Viewer on calibrated images - Orthanc Plugin
+# Stackoptica - 3D Viewer on calibrated images - Orthanc Plugin
 
 # Copyright (C) 2024 Yann Pollet, Royal Belgian Institute of Natural Sciences
 
