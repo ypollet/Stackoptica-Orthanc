@@ -28,19 +28,19 @@
 
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-FROM orthanc-python
+FROM orthanc-all
 
 # This example is using a virtual env that is not mandatory when using Docker containers
 # but recommended since python 3.11 and Debian bookworm based images where you get a warning
 # when installing system-wide packages.
-RUN apt-get update && apt install -y python3-venv
-RUN python3 -m venv /.venv
+#RUN apt-get update && apt install -y python3-venv
+#RUN python3 -m venv /.venv
 
 # for Stackoptica
-RUN /.venv/bin/pip install numpy
-ENV PYTHONPATH=/.venv/lib64/python3.11/site-packages/
+#RUN /.venv/bin/pip install numpy
+#ENV PYTHONPATH=/.venv/lib64/python3.11/site-packages/
 
-RUN mkdir /etc/orthanc/python
+#RUN mkdir /etc/orthanc/python
 COPY python-plugin.py /etc/orthanc/python/plugin.py
 
 RUN mkdir /etc/orthanc/stackoptica
