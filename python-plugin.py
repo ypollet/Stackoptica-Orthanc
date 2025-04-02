@@ -130,8 +130,13 @@ def images(output, uri, **request):
             stackedImages = dict()
             height = 0
             width = 0
+            thumbnails = False
             for instance, tags in orthanc_dict.items():
                 try:
+                    attachments = json.loads(
+                        orthanc.RestApiGet(f"/instances/{instance}/attachments")
+                    )
+                    thumbnails = "thumbnail" in attachments
                     if "ORIGINAL" in tags["ImageType"]:
                         print(f"start : {instance}")
                         width = tags["Columns"]
@@ -160,10 +165,11 @@ def images(output, uri, **request):
                     print(error)
                     continue
 
-            encoded_images.sort(key=lambda image_data: projections[image_data[0]])
+            encoded_images.sort(key=lambda image: projections[image["name"]])
             to_jsonify["stackImages"] = encoded_images
             to_jsonify["individualImages"] = stackedImages
             to_jsonify["size"] = {"width": width, "height": height}
+            to_jsonify["thumbnails"] = thumbnails
             output.AnswerBuffer(json.dumps(to_jsonify), "application/json")
         except ValueError as e:
             orthanc.LogError(e)
